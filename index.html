@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Їстівні квіти | Вирощування та продаж</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fafafa;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #8BC34A, #4CAF50);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        section {
+            padding: 40px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            margin: 15px 0 5px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #4CAF50;
+            margin: 10px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background: #43a047;
+        }
+
+        .contacts a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Їстівні квіти</h1>
+    <p>Вирощування та продаж для ресторанів, кондитерів та подій</p>
+</header>
+
+<section>
+    <h2>Наша продукція</h2>
+
+    <div class="products">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6" alt="Настурція">
+            <h3>Настурція</h3>
+            <p>Пікантний смак, ідеальна для салатів</p>
+            <p class="price">150 грн / упаковка</p>
+            <a href="https://wa.me/380501234567" class="btn">Замовити в WhatsApp</a>
+            <!-- ↑ замініть номер -->
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1508747703725-719777637510" alt="Фіалки">
+            <h3>Фіалки</h3>
+            <p>Ніжний аромат, для десертів</p>
+            <p class="price">180 грн / упаковка</p>
+            <a href="https://t.me/your_username" class="btn">Замовити в Telegram</a>
+            <!-- ↑ замініть username -->
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6" alt="Календула">
+            <h3>Календула</h3>
+            <p>Яскравий колір для декору страв</p>
+            <p class="price">120 грн / упаковка</p>
+            <a href="tel:+380501234567" class="btn">Подзвонити</a>
+            <!-- ↑ замініть номер -->
+        </div>
+
+    </div>
+</section>
+
+<section class="contacts">
+    <h2>Контакти</h2>
+    <p style="text-align:center">
+        📞 Телефон:
+        <a href="tel:+380677727751">+38 (067) 772-77-51</a><br><br>
+
+        💬 WhatsApp:
+        <a href="https://wa.me/380501234567">написати</a><br><br>
+
+        ✈️ Telegram:
+        <a href="https://t.me/your_username">@your_username</a><br><br>
+
+        📸 Instagram:
+        <a href="https://instagram.com/your_page">@your_page</a>
+    </p>
+</section>
+
+<footer>
+    © 2026 Їстівні квіти. Вирощено з любов’ю 🌿
+</footer>
+
+</body>
+</html>
