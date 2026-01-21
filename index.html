@@ -14,18 +14,19 @@ body {
     position: relative;
 }
 
-/* Фон з квітами */
+/* Фон з декоративних квітів */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     background-image:
-        url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=200&q=80'),
-        url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=200&q=80'),
-        url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=200&q=80');
+        url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=300&q=80'),
+        url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=300&q=80'),
+        url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=300&q=80'),
+        url('https://images.unsplash.com/photo-1492724441997-5dc865305da4?auto=format&fit=crop&w=300&q=80');
     background-repeat: no-repeat;
-    background-position: 10% 20%, 80% 30%, 50% 80%;
-    background-size: 220px, 200px, 180px;
+    background-position: 5% 20%, 90% 25%, 20% 80%, 80% 85%;
+    background-size: 220px, 200px, 240px, 210px;
     opacity: 0.18;
     z-index: -1;
 }
@@ -38,7 +39,7 @@ header {
 }
 
 nav a {
-    margin: 0 10px;
+    margin: 0 12px;
     font-weight: bold;
     text-decoration: none;
     color: #2e7d32;
@@ -57,14 +58,20 @@ nav a {
     padding: 6px 10px;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 5px;
 }
 
 section {
     max-width: 1100px;
     margin: 40px auto;
-    padding: 20px;
-    background: rgba(241,248,233,0.9);
-    border-radius: 15px;
+    padding: 25px;
+    background: rgba(241,248,233,0.92);
+    border-radius: 18px;
+}
+
+h2 {
+    color: #2e7d32;
+    text-align: center;
 }
 
 .products {
@@ -82,8 +89,17 @@ section {
 
 .card img {
     width: 100%;
-    height: 220px;
+    height: 240px;
     object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.price {
+    font-weight: bold;
+    color: #43a047;
 }
 
 .btn {
@@ -92,8 +108,42 @@ section {
     padding: 8px 15px;
     background: #66bb6a;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
+}
+
+.quantity-input {
+    width: 50px;
+    margin-left: 10px;
+}
+
+/* Кошик */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+}
+
+.modal-content {
+    background: #fff;
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.close {
+    float: right;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
 }
 
 footer {
@@ -114,12 +164,12 @@ footer {
     <div class="language-switch">
         <button onclick="setLanguage('uk')">UA</button>
         <button onclick="setLanguage('en')">EN</button>
-        <button onclick="openUserModal()">Кабінет</button>
     </div>
 
     <nav>
         <a href="#products" data-uk="Продукція" data-en="Products">Продукція</a>
         <a href="#news" data-uk="Новини" data-en="News">Новини</a>
+        <a href="#video" data-uk="Відео" data-en="Video">Відео</a>
         <a href="#stories" data-uk="Історії" data-en="Stories">Історії</a>
         <a href="#" id="openCartBtn">Кошик 🛒</a>
     </nav>
@@ -127,42 +177,118 @@ footer {
 
 <main>
 
+<!-- ПРОДУКЦІЯ -->
 <section id="products">
 <h2 data-uk="Продукція" data-en="Products">Продукція</h2>
 <div class="products">
-    <div class="card" data-name="Настурція" data-price="120">
-        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6">
-        <div style="padding:15px">
-            <h3>Настурція</h3>
-            <div class="price">120 грн</div>
-            <input type="number" value="1" class="quantity-input">
-            <div class="btn add-to-cart">В кошик</div>
-        </div>
-    </div>
+
+<div class="card" data-name="Настурція" data-price="120">
+<img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6">
+<div class="card-content">
+<h3>Настурція</h3>
+<div class="price">120 грн</div>
+<input type="number" value="1" class="quantity-input">
+<div class="btn add-to-cart">В кошик</div>
+</div>
+</div>
+
+<div class="card" data-name="Фіалка" data-price="150">
+<img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b">
+<div class="card-content">
+<h3>Фіалка</h3>
+<div class="price">150 грн</div>
+<input type="number" value="1" class="quantity-input">
+<div class="btn add-to-cart">В кошик</div>
+</div>
+</div>
+
+<div class="card" data-name="Календула" data-price="100">
+<img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e">
+<div class="card-content">
+<h3>Календула</h3>
+<div class="price">100 грн</div>
+<input type="number" value="1" class="quantity-input">
+<div class="btn add-to-cart">В кошик</div>
+</div>
+</div>
+
 </div>
 </section>
 
+<!-- НОВИНИ -->
 <section id="news">
 <h2>Новини</h2>
-<p>Експорт їстівних квітів в Дубай, тренди та розвиток.</p>
+<ul>
+<li><a href="https://agrotimes.ua/ovochi-sad/yistivni-kvity-eksportuyut-v-dubaj/" target="_blank">
+Їстівні квіти експортують у Дубай</a></li>
+<li><a href="https://ukr.media/garden/470078/" target="_blank">
+Їстівні квіти в кулінарії</a></li>
+</ul>
 </section>
 
+<!-- ВІДЕО -->
+<section id="video">
+<h2>Відео</h2>
+<iframe width="100%" height="315"
+src="https://www.youtube.com/embed/YunfrT2k2Qk"
+frameborder="0" allowfullscreen></iframe>
+</section>
+
+<!-- ІСТОРІЇ -->
 <section id="stories">
 <h2>Історії</h2>
-<p>Кулінарні історії з використанням їстівних квітів.</p>
+<p>
+Сьомга су-від з голландським соусом та спаржею з використанням їстівних квітів —
+приклад того, як квіти змінюють подачу та смак страв.
+</p>
+<img src="https://picantecooking.com/images/recipes/428/salmon-sous-vide.jpg"
+style="width:100%; border-radius:12px;">
 </section>
 
 </main>
 
+<!-- КОШИК -->
+<div id="cartModal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="cartModal.style.display='none'">&times;</span>
+<h3>Кошик</h3>
+<div id="cartItems"></div>
+</div>
+</div>
+
 <footer>© 2026 Їстівні квіти. Вирощено з любов’ю 🌸</footer>
 
 <script>
+let cart = [];
+const cartModal = document.getElementById('cartModal');
+document.getElementById('openCartBtn').onclick = () => cartModal.style.display='block';
+
+document.querySelectorAll('.add-to-cart').forEach(btn=>{
+btn.onclick=()=>{
+const card=btn.closest('.card');
+const name=card.dataset.name;
+const price=+card.dataset.price;
+const qty=+card.querySelector('.quantity-input').value;
+cart.push({name,price,qty});
+renderCart();
+};
+});
+
+function renderCart(){
+const div=document.getElementById('cartItems');
+div.innerHTML='';
+cart.forEach(i=>{
+div.innerHTML+=`<div class="cart-item">${i.name} x${i.qty} — ${i.price*i.qty} грн</div>`;
+});
+}
+
 function setLanguage(lang){
-    document.querySelectorAll('[data-uk]').forEach(el=>{
-        el.textContent = el.dataset[lang];
-    });
+document.querySelectorAll('[data-uk]').forEach(el=>{
+el.textContent=el.dataset[lang];
+});
 }
 </script>
 
 </body>
 </html>
+
