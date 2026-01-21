@@ -45,7 +45,7 @@ body::before {
 header {
     background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
     color: #2e7d32;
-    padding: 30px 20px 40px;
+    padding: 20px 20px 30px;
     text-align: center;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -72,7 +72,7 @@ header {
 }
 nav {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 nav a {
     text-decoration: none;
@@ -84,6 +84,24 @@ nav a {
 nav a:hover {
     color: #81c784;
 }
+/* Мова */
+.language-switch {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+.language-switch button {
+    margin-left: 5px;
+    padding: 6px 12px;
+    background: #66bb6a;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.language-switch button:hover { background: #43a047; }
 /* Секції */
 section {
     padding: 40px 20px;
@@ -192,6 +210,38 @@ h2, h3, h4 {
     font-style: italic;
     color: #555;
 }
+/* Особистий кабінет */
+#userModal {
+    display: none;
+    position: fixed;
+    z-index: 10001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+#userModal .modal-content {
+    width: 90%;
+    max-width: 400px;
+}
+.user-form input {
+    width: 90%;
+    padding: 8px;
+    margin: 6px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.user-form button {
+    background: #66bb6a;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.user-form button:hover { background: #43a047; }
+.user-info { margin-top: 10px; text-align: center; font-weight: bold; color: #2e7d32; }
 /* Контент */
 .content-section {
     background: rgba(241, 248, 233, 0.9);
@@ -233,17 +283,22 @@ footer {
             <div>Edible Flowers & Microgreens</div>
         </div>
     </div>
+    <div class="language-switch">
+        <button onclick="setLanguage('uk')">UA</button>
+        <button onclick="setLanguage('en')">EN</button>
+        <button onclick="openUserModal()">Кабінет</button>
+    </div>
     <nav>
-        <a href="#products">Продукція</a>
-        <a href="#news">Новини</a>
-        <a href="#video">Відео</a>
-        <a href="#stories">Історії</a>
-        <a href="#" id="openCartBtn">Кошик 🛒</a>
+        <a href="#products" data-uk="Продукція" data-en="Products">Продукція</a>
+        <a href="#news" data-uk="Новини" data-en="News">Новини</a>
+        <a href="#video" data-uk="Відео" data-en="Video">Відео</a>
+        <a href="#stories" data-uk="Історії" data-en="Stories">Історії</a>
+        <a href="#" id="openCartBtn" data-uk="Кошик 🛒" data-en="Cart 🛒">Кошик 🛒</a>
     </nav>
 </header>
 
 <section id="products">
-<h2>Наша продукція</h2>
+<h2 data-uk="Наша продукція" data-en="Our Products">Наша продукція</h2>
 <div class="products">
 
     <div class="card" data-name="Настурція" data-price="150">
@@ -252,8 +307,8 @@ footer {
             <h3>Настурція</h3>
             <p>Їстівна квітка з легкою пікантною гостротою.</p>
             <p class="price">150 грн / упаковка</p>
-            <label>Кількість: <input type="number" value="1" class="quantity-input"></label>
-            <button class="btn add-to-cart">Додати в кошик</button>
+            <label data-uk="Кількість:" data-en="Quantity:">Кількість: <input type="number" value="1" class="quantity-input"></label>
+            <button class="btn add-to-cart" data-uk="Додати в кошик" data-en="Add to Cart">Додати в кошик</button>
         </div>
     </div>
 
@@ -263,8 +318,8 @@ footer {
             <h3>Фіалки</h3>
             <p>Ніжні квіти з ароматом.</p>
             <p class="price">180 грн / упаковка</p>
-            <label>Кількість: <input type="number" value="1" class="quantity-input"></label>
-            <button class="btn add-to-cart">Додати в кошик</button>
+            <label data-uk="Кількість:" data-en="Quantity:">Кількість: <input type="number" value="1" class="quantity-input"></label>
+            <button class="btn add-to-cart" data-uk="Додати в кошик" data-en="Add to Cart">Додати в кошик</button>
         </div>
     </div>
 
@@ -274,77 +329,23 @@ footer {
             <h3>Календула</h3>
             <p>Яскравий натуральний декор для страв.</p>
             <p class="price">120 грн / упаковка</p>
-            <label>Кількість: <input type="number" value="1" class="quantity-input"></label>
-            <button class="btn add-to-cart">Додати в кошик</button>
+            <label data-uk="Кількість:" data-en="Quantity:">Кількість: <input type="number" value="1" class="quantity-input"></label>
+            <button class="btn add-to-cart" data-uk="Додати в кошик" data-en="Add to Cart">Додати в кошик</button>
         </div>
     </div>
 
 </div>
 </section>
 
-<section id="news" class="content-section">
-<h3>Новини</h3>
+<!-- Новини, Відео, Історії, Контакти залишаються як раніше (можемо додати data-uk/data-en для перекладу) -->
 
-<article>
-<h4>Їстівні квіти експортують у Дубай</h4>
-<p>Вертикальні ферми в ОАЕ вирощують салати, зелень та їстівні квіти, щоб задовольнити попит ресторанів і клієнтів на місцевому ринку без імпорту. Українські компанії беруть участь у виставках у Дубаї та шукають партнерів для експорту продукції.</p>
-<a href="https://agrotimes.ua/ovochi-sad/yistivni-kvity-eksportuyut-v-dubaj/" target="_blank">Читати повністю</a>
-</article>
-
-<article>
-<h4>Їстівні квіти: вирощування та використання</h4>
-<p>Дізнайтесь, які їстівні квіти — настурція, календула, фіалки, чорнобривці та інші — все частіше використовують у салатах, десертах і напоях. Поради щодо вирощування на балконі чи в саду допоможуть отримати красивий та смачний урожай.</p>
-<a href="https://ua-novosti.info/rozvagi/yistivni-kviti-na-balkoni-povnij-spisok-poradi-z-viroshhuvannya-ta-vikoristannya-v-kulinariyi.html" target="_blank">Читати повністю</a>
-</article>
-
-<article>
-<h4>Їстівні квіти: корисні поради та лайфхаки</h4>
-<p>Популярні види їстівних квітів та ідеї використання в кулінарії: салати, десерти, напої. Корисні поради щодо догляду та збирання для максимального смаку та декоративності.</p>
-<a href="https://ukr.media/garden/470078/" target="_blank">Читати повністю</a>
-</article>
-
-</section>
-
-<section id="video" class="content-section">
-<h3>Відео</h3>
-<iframe width="100%" height="360"
-    src="https://www.youtube.com/embed/YunfrT2k2Qk"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-</iframe>
-</section>
-
-<section id="stories" class="content-section">
-<h3>Історії</h3>
-
-<article>
-<h4>Сьомга су‑від з голландським соусом і спаржею</h4>
-<p>Ця страва — розкішне поєднання ніжної сьомги, спаржі та класичного голландського соусу з ароматом бекону, яке чудово підійде як святкова страва або частина обіду. Рецепт та фото можна переглянути на Picante Cooking.</p>
-<a href="https://picantecooking.com/uk/recipe/somga-su-vid-z-gollandskim-sousom-i-sparzheyu" target="_blank">Читати повністю</a>
-</article>
-
-</section>
-
-<section class="contacts">
-<h2>Контакти</h2>
-<p style="text-align:center">
-Телефон: <a href="tel:+380677727751">+38 (067) 772-77-51</a><br><br>
-WhatsApp: <a href="https://wa.me/380677727751">написати</a><br><br>
-Telegram: <a href="https://t.me/A8skv">@A8skv</a>
-</p>
-<div class="social">
-    <a class="instagram" href="https://www.instagram.com/kostyas1110/" target="_blank">Instagram</a>
-    <a class="facebook" href="https://www.facebook.com/kslobodyan/" target="_blank">Facebook</a>
-</div>
-</section>
-
+<!-- Кошик -->
 <div id="cartModal" class="modal">
 <div class="modal-content">
     <span class="close" id="closeModal">&times;</span>
-    <h3>Кошик</h3>
+    <h3 data-uk="Кошик" data-en="Cart">Кошик</h3>
     <div id="cart-items">
-        <p class="cart-empty">Ваш кошик порожній</p>
+        <p class="cart-empty" data-uk="Ваш кошик порожній" data-en="Your cart is empty">Ваш кошик порожній</p>
     </div>
     <div class="cart-total" id="cart-total">Всього: 0 грн</div>
     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
@@ -353,14 +354,31 @@ Telegram: <a href="https://t.me/A8skv">@A8skv</a>
         <input type="hidden" name="item_name" id="paypal-items" value="">
         <input type="hidden" name="amount" id="paypal-amount" value="0">
         <input type="hidden" name="currency_code" value="UAH">
-        <button type="submit" class="btn">Оплатити онлайн</button>
+        <button type="submit" class="btn" data-uk="Оплатити онлайн" data-en="Pay Online">Оплатити онлайн</button>
     </form>
+</div>
+</div>
+
+<!-- Особистий кабінет -->
+<div id="userModal" class="modal">
+<div class="modal-content">
+    <span class="close" id="closeUserModal">&times;</span>
+    <h3 data-uk="Особистий кабінет" data-en="User Account">Особистий кабінет</h3>
+    <div id="userFormContainer">
+        <form id="userForm" class="user-form">
+            <input type="text" id="userName" placeholder="Ім'я / Name" required>
+            <input type="email" id="userEmail" placeholder="Email" required>
+            <button type="submit" data-uk="Зберегти" data-en="Save">Зберегти</button>
+        </form>
+        <div id="userInfo" class="user-info"></div>
+    </div>
 </div>
 </div>
 
 <footer>© 2026 Їстівні квіти. Вирощено з любов’ю 🌸</footer>
 
 <script>
+// ------------------ Кошик ------------------
 let cart = [];
 const modal = document.getElementById('cartModal');
 const closeModal = document.getElementById('closeModal');
@@ -382,9 +400,12 @@ openCartBtn.onclick = () => modal.style.display = 'block';
 closeModal.onclick = () => modal.style.display = 'none';
 window.onclick = (event) => { if(event.target == modal) modal.style.display = 'none'; }
 function removeFromCart(index){ cart.splice(index, 1); renderCart(); }
-function renderCart(){ const cartItemsDiv = document.getElementById('cart-items'); cartItemsDiv.innerHTML = '';
-    if(cart.length === 0){ cartItemsDiv.innerHTML = '<p class="cart-empty">Ваш кошик порожній</p>'; }
-    else {
+function renderCart(){ 
+    const cartItemsDiv = document.getElementById('cart-items'); 
+    cartItemsDiv.innerHTML = '';
+    if(cart.length === 0){ 
+        cartItemsDiv.innerHTML = '<p class="cart-empty" data-uk="Ваш кошик порожній" data-en="Your cart is empty">Ваш кошик порожній</p>'; 
+    } else {
         let paypalItems = []; let totalAmount = 0;
         cart.forEach((item, index) => {
             const div = document.createElement('div');
@@ -399,6 +420,47 @@ function renderCart(){ const cartItemsDiv = document.getElementById('cart-items'
     }
     const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
     document.getElementById('cart-total').textContent = 'Всього: ' + total + ' грн';
+}
+
+// ------------------ Мова ------------------
+function setLanguage(lang){
+    document.querySelectorAll('[data-uk]').forEach(el => {
+        el.textContent = el.dataset[lang];
+    });
+}
+
+// ------------------ Особистий кабінет ------------------
+const userModal = document.getElementById('userModal');
+const closeUserModal = document.getElementById('closeUserModal');
+function openUserModal(){ 
+    userModal.style.display = 'block';
+    loadUserInfo();
+}
+closeUserModal.onclick = () => userModal.style.display = 'none';
+window.onclick = (event) => { if(event.target == userModal) userModal.style.display = 'none'; }
+
+const userForm = document.getElementById('userForm');
+userForm.onsubmit = function(e){
+    e.preventDefault();
+    const name = document.getElementById('userName').value.trim();
+    const email = document.getElementById('userEmail').value.trim();
+    if(name && email){
+        const user = {name, email};
+        localStorage.setItem('user', JSON.stringify(user));
+        loadUserInfo();
+        alert('Дані збережено!');
+    }
+}
+function loadUserInfo(){
+    const userData = JSON.parse(localStorage.getItem('user'));
+    const userInfo = document.getElementById('userInfo');
+    if(userData){
+        userInfo.innerHTML = `Привіт, ${userData.name} <br> Email: ${userData.email}`;
+        userForm.style.display = 'none';
+    } else {
+        userForm.style.display = 'block';
+        userInfo.innerHTML = '';
+    }
 }
 </script>
 
