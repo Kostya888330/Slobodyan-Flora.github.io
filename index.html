@@ -4,255 +4,357 @@
 <meta charset="UTF-8">
 <title>Їстівні квіти — Edible Flowers & Microgreens</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
+/* Загальні стилі */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
     background: #fffaf0;
-    overflow-x: hidden;
     position: relative;
+    overflow-x: hidden;
 }
-
-/* Фон з декоративних квітів */
+/* Фон із великих декоративних квітів */
 body::before {
     content: "";
     position: fixed;
-    inset: 0;
-    background-image:
-        url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=300&q=80'),
-        url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=300&q=80'),
-        url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=300&q=80'),
-        url('https://images.unsplash.com/photo-1492724441997-5dc865305da4?auto=format&fit=crop&w=300&q=80');
-    background-repeat: no-repeat;
-    background-position: 5% 20%, 90% 25%, 20% 80%, 80% 85%;
-    background-size: 220px, 200px, 240px, 210px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=200&q=80'),
+        url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=200&q=80'),
+        url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=200&q=80'),
+        url('https://images.unsplash.com/photo-1492724441997-5dc865305da4?auto=format&fit=crop&w=200&q=80'),
+        url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=200&q=80');
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+    background-position: 10% 15%, 80% 25%, 50% 75%, 30% 60%, 70% 80%;
+    background-size: 200px 200px, 220px 220px, 180px 180px, 200px 200px, 210px 210px;
     opacity: 0.18;
     z-index: -1;
+    animation: float-bg 60s infinite linear;
 }
-
+@keyframes float-bg {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(15deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+/* Заголовок */
 header {
     background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
-    padding: 20px;
+    color: #2e7d32;
+    padding: 30px 20px 40px;
     text-align: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    z-index: 2;
     position: relative;
 }
-
-nav a {
-    margin: 0 12px;
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+.logo-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: white;
+    color: #4CAF50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
     font-weight: bold;
+}
+nav {
+    text-align: center;
+    margin-top: 20px;
+}
+nav a {
     text-decoration: none;
     color: #2e7d32;
+    margin: 0 12px;
+    font-weight: bold;
+    transition: color 0.3s;
 }
-
-.language-switch {
-    position: absolute;
-    top: 15px;
-    right: 20px;
+nav a:hover {
+    color: #81c784;
 }
-
-.language-switch button {
-    background: #66bb6a;
-    border: none;
-    color: #fff;
-    padding: 6px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 5px;
-}
-
+/* Секції */
 section {
+    padding: 40px 20px;
     max-width: 1100px;
-    margin: 40px auto;
-    padding: 25px;
-    background: rgba(241,248,233,0.92);
-    border-radius: 18px;
+    margin: auto;
+    position: relative;
+    z-index: 1;
 }
-
-h2 {
-    color: #2e7d32;
-    text-align: center;
+h2, h3, h4 {
+    color: #388e3c;
 }
-
 .products {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
 }
-
 .card {
     background: #fff;
     border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
-
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
 .card img {
     width: 100%;
-    height: 240px;
+    height: 300px;
     object-fit: cover;
 }
-
-.card-content {
-    padding: 15px;
-}
-
 .price {
     font-weight: bold;
     color: #43a047;
+    margin: 10px 0;
 }
-
 .btn {
     display: inline-block;
     margin-top: 10px;
-    padding: 8px 15px;
+    padding: 10px 18px;
     background: #66bb6a;
-    color: #fff;
-    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
     cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
 }
-
+.btn:hover {
+    background: #43a047;
+    transform: scale(1.05);
+}
 .quantity-input {
     width: 50px;
+    padding: 4px;
     margin-left: 10px;
 }
-
 /* Кошик */
 .modal {
     display: none;
     position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 9999;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
 }
-
 .modal-content {
-    background: #fff;
-    max-width: 400px;
-    margin: 60px auto;
+    background-color: #fff;
+    margin: 50px auto;
     padding: 20px;
     border-radius: 15px;
+    width: 90%;
+    max-width: 450px;
 }
-
 .close {
+    color: #aaa;
     float: right;
-    font-size: 22px;
+    font-size: 28px;
+    font-weight: bold;
     cursor: pointer;
 }
-
+.close:hover {
+    color: #000;
+}
 .cart-item {
     display: flex;
     justify-content: space-between;
     margin: 8px 0;
 }
-
+.cart-item button {
+    background: red;
+    padding: 2px 6px;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+}
+.cart-total {
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: right;
+}
+.cart-empty {
+    text-align: center;
+    font-style: italic;
+    color: #555;
+}
+/* Контент */
+.content-section {
+    background: rgba(241, 248, 233, 0.9);
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 40px;
+}
+.social {
+    text-align: center;
+    margin-top: 15px;
+}
+.social a {
+    display: inline-block;
+    margin: 0 8px;
+    padding: 10px 18px;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+.instagram { background: #E1306C; }
+.facebook  { background: #1877F2; }
 footer {
     background: #333;
-    color: #fff;
-    padding: 20px;
+    color: white;
     text-align: center;
+    padding: 20px;
+    font-size: 14px;
 }
 </style>
 </head>
-
 <body>
 
 <header>
-    <h1>Їстівні квіти</h1>
-    <div>Edible Flowers & Microgreens</div>
-
-    <div class="language-switch">
-        <button onclick="setLanguage('uk')">UA</button>
-        <button onclick="setLanguage('en')">EN</button>
+    <div class="logo">
+        <div class="logo-icon">🌿</div>
+        <div>
+            <h1>Їстівні квіти</h1>
+            <div>Edible Flowers & Microgreens</div>
+        </div>
     </div>
-
     <nav>
-        <a href="#products" data-uk="Продукція" data-en="Products">Продукція</a>
-        <a href="#news" data-uk="Новини" data-en="News">Новини</a>
-        <a href="#video" data-uk="Відео" data-en="Video">Відео</a>
-        <a href="#stories" data-uk="Історії" data-en="Stories">Історії</a>
+        <a href="#products">Продукція</a>
+        <a href="#news">Новини</a>
+        <a href="#video">Відео</a>
+        <a href="#stories">Історії</a>
         <a href="#" id="openCartBtn">Кошик 🛒</a>
     </nav>
 </header>
 
-<main>
-
-<!-- ПРОДУКЦІЯ -->
 <section id="products">
-<h2 data-uk="Продукція" data-en="Products">Продукція</h2>
+<h2>Наша продукція</h2>
 <div class="products">
 
-<div class="card" data-name="Настурція" data-price="120">
-<img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6">
-<div class="card-content">
-<h3>Настурція</h3>
-<div class="price">120 грн</div>
-<input type="number" value="1" class="quantity-input">
-<div class="btn add-to-cart">В кошик</div>
-</div>
-</div>
+    <div class="card" data-name="Настурція" data-price="150">
+        <img src="https://harchi.info/sites/default/files/921-nasturtium-1.jpg" alt="Настурція">
+        <div class="card-content">
+            <h3>Настурція</h3>
+            <p>Їстівна квітка з легкою пікантною гостротою.</p>
+            <p class="price">150 грн / упаковка</p>
+            <label>Кількість: <input type="number" value="1" class="quantity-input"></label>
+            <button class="btn add-to-cart">Додати в кошик</button>
+        </div>
+    </div>
 
-<div class="card" data-name="Фіалка" data-price="150">
-<img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b">
-<div class="card-content">
-<h3>Фіалка</h3>
-<div class="price">150 грн</div>
-<input type="number" value="1" class="quantity-input">
-<div class="btn add-to-cart">В кошик</div>
-</div>
-</div>
+    <div class="card" data-name="Фіалки" data-price="180">
+        <img src="https://liza.ua/wp-content/uploads/2023/04/kristina-kutlesa-dei4hxtqfhu-unsplash.webp" alt="Фіалки">
+        <div class="card-content">
+            <h3>Фіалки</h3>
+            <p>Ніжні квіти з ароматом.</p>
+            <p class="price">180 грн / упаковка</p>
+            <label>Кількість: <input type="number" value="1" class="quantity-input"></label>
+            <button class="btn add-to-cart">Додати в кошик</button>
+        </div>
+    </div>
 
-<div class="card" data-name="Календула" data-price="100">
-<img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e">
-<div class="card-content">
-<h3>Календула</h3>
-<div class="price">100 грн</div>
-<input type="number" value="1" class="quantity-input">
-<div class="btn add-to-cart">В кошик</div>
-</div>
-</div>
+    <div class="card" data-name="Календула" data-price="120">
+        <img src="https://images.prom.ua/4865001318_w640_h640_kalendula-tsvit-1kg.jpg" alt="Календула">
+        <div class="card-content">
+            <h3>Календула</h3>
+            <p>Яскравий натуральний декор для страв.</p>
+            <p class="price">120 грн / упаковка</p>
+            <label>Кількість: <input type="number" value="1" class="quantity-input"></label>
+            <button class="btn add-to-cart">Додати в кошик</button>
+        </div>
+    </div>
 
 </div>
 </section>
 
-<!-- НОВИНИ -->
-<section id="news">
-<h2>Новини</h2>
-<ul>
-<li><a href="https://agrotimes.ua/ovochi-sad/yistivni-kvity-eksportuyut-v-dubaj/" target="_blank">
-Їстівні квіти експортують у Дубай</a></li>
-<li><a href="https://ukr.media/garden/470078/" target="_blank">
-Їстівні квіти в кулінарії</a></li>
-</ul>
+<section id="news" class="content-section">
+<h3>Новини</h3>
+
+<article>
+<h4>Їстівні квіти експортують у Дубай</h4>
+<p>Вертикальні ферми в ОАЕ вирощують салати, зелень та їстівні квіти, щоб задовольнити попит ресторанів і клієнтів на місцевому ринку без імпорту. Українські компанії беруть участь у виставках у Дубаї та шукають партнерів для експорту продукції.</p>
+<a href="https://agrotimes.ua/ovochi-sad/yistivni-kvity-eksportuyut-v-dubaj/" target="_blank">Читати повністю</a>
+</article>
+
+<article>
+<h4>Їстівні квіти: вирощування та використання</h4>
+<p>Дізнайтесь, які їстівні квіти — настурція, календула, фіалки, чорнобривці та інші — все частіше використовують у салатах, десертах і напоях. Поради щодо вирощування на балконі чи в саду допоможуть отримати красивий та смачний урожай.</p>
+<a href="https://ua-novosti.info/rozvagi/yistivni-kviti-na-balkoni-povnij-spisok-poradi-z-viroshhuvannya-ta-vikoristannya-v-kulinariyi.html" target="_blank">Читати повністю</a>
+</article>
+
+<article>
+<h4>Їстівні квіти: корисні поради та лайфхаки</h4>
+<p>Популярні види їстівних квітів та ідеї використання в кулінарії: салати, десерти, напої. Корисні поради щодо догляду та збирання для максимального смаку та декоративності.</p>
+<a href="https://ukr.media/garden/470078/" target="_blank">Читати повністю</a>
+</article>
+
 </section>
 
-<!-- ВІДЕО -->
-<section id="video">
-<h2>Відео</h2>
-<iframe width="100%" height="315"
-src="https://www.youtube.com/embed/YunfrT2k2Qk"
-frameborder="0" allowfullscreen></iframe>
+<section id="video" class="content-section">
+<h3>Відео</h3>
+<iframe width="100%" height="360"
+    src="https://www.youtube.com/embed/YunfrT2k2Qk"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+</iframe>
 </section>
 
-<!-- ІСТОРІЇ -->
-<section id="stories">
-<h2>Історії</h2>
-<p>
-Сьомга су-від з голландським соусом та спаржею з використанням їстівних квітів —
-приклад того, як квіти змінюють подачу та смак страв.
+<section id="stories" class="content-section">
+<h3>Історії</h3>
+
+<article>
+<h4>Сьомга су‑від з голландським соусом і спаржею</h4>
+<p>Ця страва — розкішне поєднання ніжної сьомги, спаржі та класичного голландського соусу з ароматом бекону, яке чудово підійде як святкова страва або частина обіду. Рецепт та фото можна переглянути на Picante Cooking.</p>
+<a href="https://picantecooking.com/uk/recipe/somga-su-vid-z-gollandskim-sousom-i-sparzheyu" target="_blank">Читати повністю</a>
+</article>
+
+</section>
+
+<section class="contacts">
+<h2>Контакти</h2>
+<p style="text-align:center">
+Телефон: <a href="tel:+380677727751">+38 (067) 772-77-51</a><br><br>
+WhatsApp: <a href="https://wa.me/380677727751">написати</a><br><br>
+Telegram: <a href="https://t.me/A8skv">@A8skv</a>
 </p>
-<img src="https://picantecooking.com/images/recipes/428/salmon-sous-vide.jpg"
-style="width:100%; border-radius:12px;">
+<div class="social">
+    <a class="instagram" href="https://www.instagram.com/kostyas1110/" target="_blank">Instagram</a>
+    <a class="facebook" href="https://www.facebook.com/kslobodyan/" target="_blank">Facebook</a>
+</div>
 </section>
 
-</main>
-
-<!-- КОШИК -->
 <div id="cartModal" class="modal">
 <div class="modal-content">
-<span class="close" onclick="cartModal.style.display='none'">&times;</span>
-<h3>Кошик</h3>
-<div id="cartItems"></div>
+    <span class="close" id="closeModal">&times;</span>
+    <h3>Кошик</h3>
+    <div id="cart-items">
+        <p class="cart-empty">Ваш кошик порожній</p>
+    </div>
+    <div class="cart-total" id="cart-total">Всього: 0 грн</div>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="your-paypal-email@example.com">
+        <input type="hidden" name="item_name" id="paypal-items" value="">
+        <input type="hidden" name="amount" id="paypal-amount" value="0">
+        <input type="hidden" name="currency_code" value="UAH">
+        <button type="submit" class="btn">Оплатити онлайн</button>
+    </form>
 </div>
 </div>
 
@@ -260,32 +362,43 @@ style="width:100%; border-radius:12px;">
 
 <script>
 let cart = [];
-const cartModal = document.getElementById('cartModal');
-document.getElementById('openCartBtn').onclick = () => cartModal.style.display='block';
-
-document.querySelectorAll('.add-to-cart').forEach(btn=>{
-btn.onclick=()=>{
-const card=btn.closest('.card');
-const name=card.dataset.name;
-const price=+card.dataset.price;
-const qty=+card.querySelector('.quantity-input').value;
-cart.push({name,price,qty});
-renderCart();
-};
+const modal = document.getElementById('cartModal');
+const closeModal = document.getElementById('closeModal');
+const openCartBtn = document.getElementById('openCartBtn');
+document.querySelectorAll('.add-to-cart').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const card = btn.closest('.card');
+        const name = card.dataset.name;
+        const price = parseInt(card.dataset.price);
+        const qty = parseInt(card.querySelector('.quantity-input').value) || 1;
+        const index = cart.findIndex(item => item.name === name);
+        if(index > -1){ cart[index].qty += qty; }
+        else { cart.push({name, price, qty}); }
+        renderCart();
+        modal.style.display = 'block';
+    });
 });
-
-function renderCart(){
-const div=document.getElementById('cartItems');
-div.innerHTML='';
-cart.forEach(i=>{
-div.innerHTML+=`<div class="cart-item">${i.name} x${i.qty} — ${i.price*i.qty} грн</div>`;
-});
-}
-
-function setLanguage(lang){
-document.querySelectorAll('[data-uk]').forEach(el=>{
-el.textContent=el.dataset[lang];
-});
+openCartBtn.onclick = () => modal.style.display = 'block';
+closeModal.onclick = () => modal.style.display = 'none';
+window.onclick = (event) => { if(event.target == modal) modal.style.display = 'none'; }
+function removeFromCart(index){ cart.splice(index, 1); renderCart(); }
+function renderCart(){ const cartItemsDiv = document.getElementById('cart-items'); cartItemsDiv.innerHTML = '';
+    if(cart.length === 0){ cartItemsDiv.innerHTML = '<p class="cart-empty">Ваш кошик порожній</p>'; }
+    else {
+        let paypalItems = []; let totalAmount = 0;
+        cart.forEach((item, index) => {
+            const div = document.createElement('div');
+            div.className = 'cart-item';
+            div.innerHTML = `${item.name} x ${item.qty} = ${item.price * item.qty} грн <button onclick="removeFromCart(${index})">x</button>`;
+            cartItemsDiv.appendChild(div);
+            paypalItems.push(`${item.name} x${item.qty}`);
+            totalAmount += item.price * item.qty;
+        });
+        document.getElementById('paypal-items').value = paypalItems.join(', ');
+        document.getElementById('paypal-amount').value = totalAmount;
+    }
+    const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    document.getElementById('cart-total').textContent = 'Всього: ' + total + ' грн';
 }
 </script>
 
