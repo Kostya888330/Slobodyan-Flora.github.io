@@ -4,463 +4,163 @@
 <meta charset="UTF-8">
 <title>Їстівні квіти — Edible Flowers & Microgreens</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-/* Загальні стилі */
 body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
+    font-family: Arial, sans-serif;
     background: #fffaf0;
-    position: relative;
     overflow-x: hidden;
+    position: relative;
 }
-/* Фон із великих декоративних квітів */
+
+/* Фон з квітами */
 body::before {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
+    inset: 0;
+    background-image:
         url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=200&q=80'),
         url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=200&q=80'),
-        url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=200&q=80'),
-        url('https://images.unsplash.com/photo-1492724441997-5dc865305da4?auto=format&fit=crop&w=200&q=80'),
-        url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=200&q=80');
-    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
-    background-position: 10% 15%, 80% 25%, 50% 75%, 30% 60%, 70% 80%;
-    background-size: 200px 200px, 220px 220px, 180px 180px, 200px 200px, 210px 210px;
+        url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=200&q=80');
+    background-repeat: no-repeat;
+    background-position: 10% 20%, 80% 30%, 50% 80%;
+    background-size: 220px, 200px, 180px;
     opacity: 0.18;
     z-index: -1;
-    animation: float-bg 60s infinite linear;
 }
-@keyframes float-bg {
-    0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(15deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
-}
-/* Заголовок */
+
 header {
     background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
-    color: #2e7d32;
-    padding: 20px 20px 30px;
+    padding: 20px;
     text-align: center;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    z-index: 2;
     position: relative;
 }
-.logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-}
-.logo-icon {
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    background: white;
-    color: #4CAF50;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    font-weight: bold;
-}
-nav {
-    text-align: center;
-    margin-top: 15px;
-}
+
 nav a {
+    margin: 0 10px;
+    font-weight: bold;
     text-decoration: none;
     color: #2e7d32;
-    margin: 0 12px;
-    font-weight: bold;
-    transition: color 0.3s;
 }
-nav a:hover {
-    color: #81c784;
-}
-/* Мова */
+
 .language-switch {
     position: absolute;
     top: 15px;
     right: 20px;
 }
+
 .language-switch button {
-    margin-left: 5px;
-    padding: 6px 12px;
     background: #66bb6a;
     border: none;
+    color: #fff;
+    padding: 6px 10px;
     border-radius: 5px;
-    color: white;
-    font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
 }
-.language-switch button:hover { background: #43a047; }
-/* Секції */
+
 section {
-    padding: 40px 20px;
     max-width: 1100px;
-    margin: auto;
-    position: relative;
-    z-index: 1;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(241,248,233,0.9);
+    border-radius: 15px;
 }
-h2, h3, h4 {
-    color: #388e3c;
-}
+
 .products {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
 }
+
 .card {
     background: #fff;
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-}
+
 .card img {
     width: 100%;
-    height: 300px;
+    height: 220px;
     object-fit: cover;
 }
-.price {
-    font-weight: bold;
-    color: #43a047;
-    margin: 10px 0;
-}
+
 .btn {
     display: inline-block;
     margin-top: 10px;
-    padding: 10px 18px;
-    background: #66bb6a;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.2s, background 0.2s;
-}
-.btn:hover {
-    background: #43a047;
-    transform: scale(1.05);
-}
-.quantity-input {
-    width: 50px;
-    padding: 4px;
-    margin-left: 10px;
-}
-/* Кошик */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 10000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-}
-.modal-content {
-    background-color: #fff;
-    margin: 50px auto;
-    padding: 20px;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 450px;
-}
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-.close:hover {
-    color: #000;
-}
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    margin: 8px 0;
-}
-.cart-item button {
-    background: red;
-    padding: 2px 6px;
-    border: none;
-    border-radius: 3px;
-    color: white;
-    cursor: pointer;
-}
-.cart-total {
-    font-weight: bold;
-    margin-top: 10px;
-    text-align: right;
-}
-.cart-empty {
-    text-align: center;
-    font-style: italic;
-    color: #555;
-}
-/* Особистий кабінет */
-#userModal {
-    display: none;
-    position: fixed;
-    z-index: 10001;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-}
-#userModal .modal-content {
-    width: 90%;
-    max-width: 400px;
-}
-.user-form input {
-    width: 90%;
-    padding: 8px;
-    margin: 6px 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-.user-form button {
-    background: #66bb6a;
-    color: white;
-    border: none;
     padding: 8px 15px;
+    background: #66bb6a;
+    color: #fff;
     border-radius: 5px;
     cursor: pointer;
 }
-.user-form button:hover { background: #43a047; }
-.user-info { margin-top: 10px; text-align: center; font-weight: bold; color: #2e7d32; }
-/* Контент */
-.content-section {
-    background: rgba(241, 248, 233, 0.9);
-    border-radius: 15px;
-    padding: 20px;
-    margin-top: 40px;
-}
-.social {
-    text-align: center;
-    margin-top: 15px;
-}
-.social a {
-    display: inline-block;
-    margin: 0 8px;
-    padding: 10px 18px;
-    border-radius: 6px;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-.instagram { background: #E1306C; }
-.facebook  { background: #1877F2; }
+
 footer {
     background: #333;
-    color: white;
-    text-align: center;
+    color: #fff;
     padding: 20px;
-    font-size: 14px;
+    text-align: center;
 }
 </style>
 </head>
+
 <body>
 
 <header>
-    <div class="logo">
-        <div class="logo-icon">🌿</div>
-        <div>
-            <h1>Їстівні квіти</h1>
-            <div>Edible Flowers & Microgreens</div>
-        </div>
-    </div>
+    <h1>Їстівні квіти</h1>
+    <div>Edible Flowers & Microgreens</div>
+
     <div class="language-switch">
         <button onclick="setLanguage('uk')">UA</button>
         <button onclick="setLanguage('en')">EN</button>
         <button onclick="openUserModal()">Кабінет</button>
     </div>
+
     <nav>
         <a href="#products" data-uk="Продукція" data-en="Products">Продукція</a>
         <a href="#news" data-uk="Новини" data-en="News">Новини</a>
-        <a href="#video" data-uk="Відео" data-en="Video">Відео</a>
         <a href="#stories" data-uk="Історії" data-en="Stories">Історії</a>
-        <a href="#" id="openCartBtn" data-uk="Кошик 🛒" data-en="Cart 🛒">Кошик 🛒</a>
+        <a href="#" id="openCartBtn">Кошик 🛒</a>
     </nav>
 </header>
 
+<main>
+
 <section id="products">
-<h2 data-uk="Наша продукція" data-en="Our Products">Наша продукція</h2>
+<h2 data-uk="Продукція" data-en="Products">Продукція</h2>
 <div class="products">
-
-    <div class="card" data-name="Настурція" data-price="150">
-        <img src="https://harchi.info/sites/default/files/921-nasturtium-1.jpg" alt="Настурція">
-        <div class="card-content">
+    <div class="card" data-name="Настурція" data-price="120">
+        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6">
+        <div style="padding:15px">
             <h3>Настурція</h3>
-            <p>Їстівна квітка з легкою пікантною гостротою.</p>
-            <p class="price">150 грн / упаковка</p>
-            <label data-uk="Кількість:" data-en="Quantity:">Кількість: <input type="number" value="1" class="quantity-input"></label>
-            <button class="btn add-to-cart" data-uk="Додати в кошик" data-en="Add to Cart">Додати в кошик</button>
+            <div class="price">120 грн</div>
+            <input type="number" value="1" class="quantity-input">
+            <div class="btn add-to-cart">В кошик</div>
         </div>
     </div>
-
-    <div class="card" data-name="Фіалки" data-price="180">
-        <img src="https://liza.ua/wp-content/uploads/2023/04/kristina-kutlesa-dei4hxtqfhu-unsplash.webp" alt="Фіалки">
-        <div class="card-content">
-            <h3>Фіалки</h3>
-            <p>Ніжні квіти з ароматом.</p>
-            <p class="price">180 грн / упаковка</p>
-            <label data-uk="Кількість:" data-en="Quantity:">Кількість: <input type="number" value="1" class="quantity-input"></label>
-            <button class="btn add-to-cart" data-uk="Додати в кошик" data-en="Add to Cart">Додати в кошик</button>
-        </div>
-    </div>
-
-    <div class="card" data-name="Календула" data-price="120">
-        <img src="https://images.prom.ua/4865001318_w640_h640_kalendula-tsvit-1kg.jpg" alt="Календула">
-        <div class="card-content">
-            <h3>Календула</h3>
-            <p>Яскравий натуральний декор для страв.</p>
-            <p class="price">120 грн / упаковка</p>
-            <label data-uk="Кількість:" data-en="Quantity:">Кількість: <input type="number" value="1" class="quantity-input"></label>
-            <button class="btn add-to-cart" data-uk="Додати в кошик" data-en="Add to Cart">Додати в кошик</button>
-        </div>
-    </div>
-
 </div>
 </section>
 
-<!-- Новини, Відео, Історії, Контакти залишаються як раніше (можемо додати data-uk/data-en для перекладу) -->
+<section id="news">
+<h2>Новини</h2>
+<p>Експорт їстівних квітів в Дубай, тренди та розвиток.</p>
+</section>
 
-<!-- Кошик -->
-<div id="cartModal" class="modal">
-<div class="modal-content">
-    <span class="close" id="closeModal">&times;</span>
-    <h3 data-uk="Кошик" data-en="Cart">Кошик</h3>
-    <div id="cart-items">
-        <p class="cart-empty" data-uk="Ваш кошик порожній" data-en="Your cart is empty">Ваш кошик порожній</p>
-    </div>
-    <div class="cart-total" id="cart-total">Всього: 0 грн</div>
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="your-paypal-email@example.com">
-        <input type="hidden" name="item_name" id="paypal-items" value="">
-        <input type="hidden" name="amount" id="paypal-amount" value="0">
-        <input type="hidden" name="currency_code" value="UAH">
-        <button type="submit" class="btn" data-uk="Оплатити онлайн" data-en="Pay Online">Оплатити онлайн</button>
-    </form>
-</div>
-</div>
+<section id="stories">
+<h2>Історії</h2>
+<p>Кулінарні історії з використанням їстівних квітів.</p>
+</section>
 
-<!-- Особистий кабінет -->
-<div id="userModal" class="modal">
-<div class="modal-content">
-    <span class="close" id="closeUserModal">&times;</span>
-    <h3 data-uk="Особистий кабінет" data-en="User Account">Особистий кабінет</h3>
-    <div id="userFormContainer">
-        <form id="userForm" class="user-form">
-            <input type="text" id="userName" placeholder="Ім'я / Name" required>
-            <input type="email" id="userEmail" placeholder="Email" required>
-            <button type="submit" data-uk="Зберегти" data-en="Save">Зберегти</button>
-        </form>
-        <div id="userInfo" class="user-info"></div>
-    </div>
-</div>
-</div>
+</main>
 
 <footer>© 2026 Їстівні квіти. Вирощено з любов’ю 🌸</footer>
 
 <script>
-// ------------------ Кошик ------------------
-let cart = [];
-const modal = document.getElementById('cartModal');
-const closeModal = document.getElementById('closeModal');
-const openCartBtn = document.getElementById('openCartBtn');
-document.querySelectorAll('.add-to-cart').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const card = btn.closest('.card');
-        const name = card.dataset.name;
-        const price = parseInt(card.dataset.price);
-        const qty = parseInt(card.querySelector('.quantity-input').value) || 1;
-        const index = cart.findIndex(item => item.name === name);
-        if(index > -1){ cart[index].qty += qty; }
-        else { cart.push({name, price, qty}); }
-        renderCart();
-        modal.style.display = 'block';
-    });
-});
-openCartBtn.onclick = () => modal.style.display = 'block';
-closeModal.onclick = () => modal.style.display = 'none';
-window.onclick = (event) => { if(event.target == modal) modal.style.display = 'none'; }
-function removeFromCart(index){ cart.splice(index, 1); renderCart(); }
-function renderCart(){ 
-    const cartItemsDiv = document.getElementById('cart-items'); 
-    cartItemsDiv.innerHTML = '';
-    if(cart.length === 0){ 
-        cartItemsDiv.innerHTML = '<p class="cart-empty" data-uk="Ваш кошик порожній" data-en="Your cart is empty">Ваш кошик порожній</p>'; 
-    } else {
-        let paypalItems = []; let totalAmount = 0;
-        cart.forEach((item, index) => {
-            const div = document.createElement('div');
-            div.className = 'cart-item';
-            div.innerHTML = `${item.name} x ${item.qty} = ${item.price * item.qty} грн <button onclick="removeFromCart(${index})">x</button>`;
-            cartItemsDiv.appendChild(div);
-            paypalItems.push(`${item.name} x${item.qty}`);
-            totalAmount += item.price * item.qty;
-        });
-        document.getElementById('paypal-items').value = paypalItems.join(', ');
-        document.getElementById('paypal-amount').value = totalAmount;
-    }
-    const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-    document.getElementById('cart-total').textContent = 'Всього: ' + total + ' грн';
-}
-
-// ------------------ Мова ------------------
 function setLanguage(lang){
-    document.querySelectorAll('[data-uk]').forEach(el => {
+    document.querySelectorAll('[data-uk]').forEach(el=>{
         el.textContent = el.dataset[lang];
     });
-}
-
-// ------------------ Особистий кабінет ------------------
-const userModal = document.getElementById('userModal');
-const closeUserModal = document.getElementById('closeUserModal');
-function openUserModal(){ 
-    userModal.style.display = 'block';
-    loadUserInfo();
-}
-closeUserModal.onclick = () => userModal.style.display = 'none';
-window.onclick = (event) => { if(event.target == userModal) userModal.style.display = 'none'; }
-
-const userForm = document.getElementById('userForm');
-userForm.onsubmit = function(e){
-    e.preventDefault();
-    const name = document.getElementById('userName').value.trim();
-    const email = document.getElementById('userEmail').value.trim();
-    if(name && email){
-        const user = {name, email};
-        localStorage.setItem('user', JSON.stringify(user));
-        loadUserInfo();
-        alert('Дані збережено!');
-    }
-}
-function loadUserInfo(){
-    const userData = JSON.parse(localStorage.getItem('user'));
-    const userInfo = document.getElementById('userInfo');
-    if(userData){
-        userInfo.innerHTML = `Привіт, ${userData.name} <br> Email: ${userData.email}`;
-        userForm.style.display = 'none';
-    } else {
-        userForm.style.display = 'block';
-        userInfo.innerHTML = '';
-    }
 }
 </script>
 
